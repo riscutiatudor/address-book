@@ -1,8 +1,13 @@
-<mvc:View controllerName="ro.riscutiatudor.controller.BaseController"
-	xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m">
+<mvc:View
+	controllerName="ro.riscutiatudor.controller.BaseController"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc">
 
-	<MessagePage title="{i18n>notFoundTitle}" text="{i18n>notFoundText}"
-		icon="{sap-icon://document}" showNavButton="{device>/system/phone}"
+	<MessagePage
+		title="{i18n>notFoundTitle}"
+		text="{i18n>notFoundText}"
+		icon="{sap-icon://document}"
+		showNavButton="{device>/system/phone}"
 		navButtonPress="onNavBack">
 	</MessagePage>
 

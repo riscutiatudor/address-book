@@ -44,11 +44,9 @@ sap.ui.define([], function () {
 		 * @private
 		 */
 		create: function (oPerson, fnSuccess) {
-			jQuery.ajax({
-				type: "POST",
+			jQuery.post({
 				url: "../rest/persons",
-				data: JSON.stringify(oPerson),
-				contentType: "application/json"
+				data: JSON.stringify(oPerson)
 			}).then(fnSuccess);
 		}
 

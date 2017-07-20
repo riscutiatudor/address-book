@@ -1,5 +1,7 @@
-<mvc:View controllerName="ro.riscutiatudor.controller.App"
-	xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m">
+<mvc:View
+	controllerName="ro.riscutiatudor.controller.App"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m">
 
 	<SplitApp id="app" />
 

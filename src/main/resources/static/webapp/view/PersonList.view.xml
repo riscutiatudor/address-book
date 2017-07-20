@@ -1,26 +1,40 @@
-<mvc:View controllerName="ro.riscutiatudor.controller.PersonList"
-	xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m">
+<mvc:View
+	controllerName="ro.riscutiatudor.controller.PersonList"
+ 	xmlns="sap.m"	
+	xmlns:mvc="sap.ui.core.mvc">
 
 	<Page>
 		<customHeader>
 			<Bar>
 				<contentMiddle>
-					<Title level="H1" text="{i18n>personListTitle} ({persons>/length})"
+					<Title
+						level="H1"
+						text="{i18n>personListTitle} ({persons>/length})"
 						textAlign="Center" />
 				</contentMiddle>
 			</Bar>
 		</customHeader>
 		<subHeader>
 			<Toolbar>
-				<SearchField id="searchField" placeholder="{i18n>personListSearch}"
+				<SearchField
+					id="searchField"
+					placeholder="{i18n>personListSearch}"
 					search="onSearch" />
 			</Toolbar>
 		</subHeader>
 		<content>
-			<List id="list" growing="true" growingThreshold="10" items="{persons>/}" mode="SingleSelectMaster"
-				updateStarted="onUpdateStarted" updateFinished="onUpdateFinished"
+			<List
+				id="list"
+				growing="true"
+				growingThreshold="10"
+				items="{persons>/}"
+				mode="SingleSelectMaster"
+				updateStarted="onUpdateStarted"
+				updateFinished="onUpdateFinished"
 				selectionChange="onSelectionChange">
-				<ObjectListItem type="Active" press="onSelectionChange"
+				<ObjectListItem
+					type="Active"
+					press="onSelectionChange"
 					title="{persons>fullName}">
 				</ObjectListItem>
 			</List>
