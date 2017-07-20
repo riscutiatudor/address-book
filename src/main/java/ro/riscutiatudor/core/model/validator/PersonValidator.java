@@ -16,24 +16,33 @@ import ro.riscutiatudor.core.model.Person;
  */
 public class PersonValidator implements Validator {
 
-	@Override
-	public boolean supports(Class<?> clazz) {
-		return Person.class.equals(clazz);
-	}
+    @Override
+    public boolean supports(Class<?> clazz) {
+	return Person.class.equals(clazz);
+    }
 
-	@Override
-	public void validate(Object target, Errors errors) {
-		Person person = (Person) target;
-		validateEmailAddress(person.getEmailAddress(), errors);
-	}
+    @Override
+    public void validate(Object target, Errors errors) {
+	Person person = (Person) target;
+	validateEmailAddress(person.getEmailAddress(), errors);
+    }
 
-	public static void validateEmailAddress(String emailAddress, Errors errors) {
-		try {
-			new InternetAddress(emailAddress).validate();
-		} catch (AddressException ex) {
-			Object[] errorArgs = { emailAddress };
-			errors.rejectValue("emailAddress", "person.invalid_emailAddress", errorArgs, emailAddress);
-		}
+    /**
+     * Validate email address
+     * 
+     * @param emailAddress
+     * @param errors
+     */
+    public static void validateEmailAddress(String emailAddress, Errors errors) {
+	if (emailAddress == null)
+	    return;
+
+	try {
+	    new InternetAddress(emailAddress).validate();
+	} catch (AddressException ex) {
+	    Object[] errorArgs = { emailAddress };
+	    errors.rejectValue("emailAddress", "person.invalid_emailAddress", errorArgs, emailAddress);
 	}
+    }
 
 }

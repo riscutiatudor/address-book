@@ -1,6 +1,6 @@
 sap.ui.define([
 	"ro/riscutiatudor/controller/BaseController"
-], function(BaseController) {
+], function (BaseController) {
 	"use strict";
 
 	/**
@@ -10,7 +10,7 @@ sap.ui.define([
 	 * @version 1.0
 	 */
 	return BaseController.extend("ro.riscutiatudor.controller.App", {
-		
+
 	});
-	
+
 });

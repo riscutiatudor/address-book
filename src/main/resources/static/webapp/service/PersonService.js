@@ -1,54 +1,41 @@
 sap.ui.define([], function () {
-    "use strict";
+	"use strict";
 
-    return {
-    
+	/**
+	 * Facade for Person Service
+	 *
+	 * @author Tudor Riscutia
+	 * @version 1.0
+	 */
+	return {
+
     	/**
 		 * Find persons by search criteria or get all if empty
 		 * @param {string} sSearch Search string
 		 * @param {function} fnSuccess Function for successful call
 		 * @private
 		 */
-    	find : function(sSearch, fnSuccess) {
-    		var sPath = "../rest/persons";
-    		
-    		if (sSearch !== null)
-    			sPath = sPath + "/search/by?name=" + sSearch;
-    		
-    		var oRequest = new XMLHttpRequest();			
-			oRequest.open("GET", sPath, true);
-			oRequest.setRequestHeader("Content-Type", "application/json");
-			
-			oRequest.onreadystatechange = function() {
-				if (this.readyState == 4 && this.status == 200) {
-					var oResponse = JSON.parse(this.response);
-					fnSuccess(oResponse._embedded.persons);
-				}
-			};
-			
-			oRequest.send();		
-    	},
-    	
+		find: function (sSearch, fnSuccess) {
+			var sPath = "../rest/persons";
+
+			if (sSearch !== null)
+				sPath = sPath + "/search/by?name=" + sSearch;
+
+			jQuery.get(sPath).then(function (oResponse) {
+				fnSuccess(oResponse._embedded.persons);
+			});
+		},
+
     	/**
 		 * Get a person with the given ID
 		 * @param {string} sPersonId Person ID
 		 * @param {function} fnSuccess Function for successful call
 		 * @private
 		 */
-    	getById : function(sPersonId, fnSuccess) {
-    		var sPath = "../rest/persons/" + sPersonId;
-    		
-    		var oRequest = new XMLHttpRequest();			
-			oRequest.open("GET", sPath, true);
-			oRequest.setRequestHeader("Content-Type", "application/json");
-			
-			oRequest.onreadystatechange = function() {
-				if (this.readyState == 4 && this.status == 200)
-					fnSuccess(JSON.parse(this.response));
-			};
-			
-			oRequest.send();
-    	},
+		getById: function (sPersonId, fnSuccess) {
+			var sPath = "../rest/persons/" + sPersonId;
+			jQuery.get(sPath).then(fnSuccess);
+		},
 
     	/**
 		 * Create new person
@@ -56,21 +43,15 @@ sap.ui.define([], function () {
 		 * @param {function} fnSuccess Function for successful call
 		 * @private
 		 */
-    	create : function(oPerson, fnSuccess) {
-    		var sPath = "../rest/persons";
-    		
-    		var oRequest = new XMLHttpRequest();
-			oRequest.open("POST", sPath, true);
-			oRequest.setRequestHeader("Content-Type", "application/json");
+		create: function (oPerson, fnSuccess) {
+			jQuery.ajax({
+				type: "POST",
+				url: "../rest/persons",
+				data: JSON.stringify(oPerson),
+				contentType: "application/json"
+			}).then(fnSuccess);
+		}
 
-			oRequest.onreadystatechange = function() {
-				if (this.readyState == 4 && this.status == 201)
-					fnSuccess(JSON.parse(this.response));								
-			};
+	}
 
-			oRequest.send(JSON.stringify(oPerson));    		
-    	}
-
-    }
-    
 });

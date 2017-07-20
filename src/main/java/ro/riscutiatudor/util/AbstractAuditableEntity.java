@@ -29,30 +29,40 @@ import lombok.Getter;
 @EntityListeners(AuditingEntityListener.class)
 public abstract class AbstractAuditableEntity {
 
-	@Id
-	@Column(name = "ID")
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Getter
-	private Long id;
+    @Id
+    @Column(name = "ID")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Getter
+    private Long id;
 
-	@CreatedDate
-	@Column(name = "CREATED_DATE")
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date createdDate;
+    @CreatedDate
+    @Column(name = "CREATED_DATE")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createdDate;
 
-	@LastModifiedDate
-	@Column(name = "LAST_MODIFIED_DATE")
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date lastModifiedDate;
+    @LastModifiedDate
+    @Column(name = "LAST_MODIFIED_DATE")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date lastModifiedDate;
 
-	public String getCreatedDate() {
-		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-		return dateFormat.format(this.createdDate);
-	}
+    /**
+     * Format createDate for output (dd/MM/yyyy HH:mm:ss)
+     * 
+     * @return createdDate
+     */
+    public String getCreatedDate() {
+	DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+	return dateFormat.format(this.createdDate);
+    }
 
-	public String getLastModifiedDate() {
-		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-		return dateFormat.format(this.lastModifiedDate);
-	}
+    /**
+     * Format lastModifiedDate for output (dd/MM/yyyy HH:mm:ss)
+     * 
+     * @return lastModifiedDate
+     */
+    public String getLastModifiedDate() {
+	DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+	return dateFormat.format(this.lastModifiedDate);
+    }
 
 }

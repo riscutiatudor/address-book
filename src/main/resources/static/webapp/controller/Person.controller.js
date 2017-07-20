@@ -2,7 +2,7 @@ sap.ui.define([
 	"ro/riscutiatudor/controller/BaseController",
 	"ro/riscutiatudor/service/PersonService",
 	"sap/ui/model/json/JSONModel"
-], function(BaseController, PersonService, JSONModel) {
+], function (BaseController, PersonService, JSONModel) {
 	"use strict";
 
 	/**
@@ -12,7 +12,7 @@ sap.ui.define([
 	 * @version 1.0
 	 */
 	return BaseController.extend("ro.riscutiatudor.controller.Person", {
-		
+
 		/* =========================================================== */
 		/* lifecycle methods */
 		/* =========================================================== */
@@ -21,17 +21,17 @@ sap.ui.define([
 		 * Called when the controller is instantiated
 		 * @public
 		 */
-		onInit : function () {
+		onInit: function () {
 			// attach handler before pattern matched
 			this.getRouter().getRoute("person").attachPatternMatched(
 				this._matchPattern, this);
 		},
-		
+
 		/* =========================================================== */
 		/* event handlers */
 		/* =========================================================== */
-	
-		
+
+
 		/* =========================================================== */
 		/* internal methods */
 		/* =========================================================== */
@@ -41,24 +41,24 @@ sap.ui.define([
 		 * @param {sap.ui.base.Event} oEvent pattern match event in route 'object'
 		 * @private
 		 */
-		_matchPattern : function (oEvent) {
+		_matchPattern: function (oEvent) {
 			this._getById(oEvent.getParameter("arguments").id);
 		},
-		
+
 		/**
 		 * Get a person with the given ID
 		 * @param {string} sPersonId Person ID
 		 * @private
-		 */		
-		_getById : function (sPersonId) {
+		 */
+		_getById: function (sPersonId) {
 			var oThis = this;
-			PersonService.getById(sPersonId, function(oPerson) {
+			PersonService.getById(sPersonId, function (oPerson) {
 				var oModel = new JSONModel();
-				oModel.setData(oPerson);			
+				oModel.setData(oPerson);
 				oThis.setModel(oModel, "person");
 			});
-		}	
-		
+		}
+
 	});
-	
+
 });

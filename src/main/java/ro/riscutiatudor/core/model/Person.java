@@ -27,20 +27,20 @@ import ro.riscutiatudor.util.AbstractAuditableEntity;
 @EqualsAndHashCode(callSuper = false)
 public class Person extends AbstractAuditableEntity {
 
-	public enum PersonTitle {
-		MR, MS;
-	}
+    public enum PersonTitle {
+	MR, MS;
+    }
 
-	@Column(name = "TITLE")
-	private PersonTitle title;
+    @Column(name = "TITLE")
+    private PersonTitle title;
 
-	@Column(name = "FIRST_NAME")
-	private @NonNull String firstName;
+    @Column(name = "FIRST_NAME")
+    private @NonNull String firstName;
 
-	@Column(name = "LAST_NAME")
-	private @NonNull String lastName;
+    @Column(name = "LAST_NAME")
+    private @NonNull String lastName;
 
-	@Column(name = "EMAIL_ADDRESS")
-	private String emailAddress;
+    @Column(name = "EMAIL_ADDRESS")
+    private String emailAddress;
 
 }

@@ -19,19 +19,23 @@ import ro.riscutiatudor.core.model.projection.PersonSummary;
 @RepositoryRestResource(path = "persons", excerptProjection = PersonSummary.class)
 public interface PersonRepository extends JpaRepository<Person, Long> {
 
-	/**
-	 * can be tested using: /persons/search/by?name=*
-	 */
-	@RestResource(path = "by", exported = true)
-	List<Person> findByFirstNameContainingOrLastNameContainingAllIgnoreCase(@Param("name") String firstName,
-			@Param("name") String lastName);
+    /**
+     * Search persons by name ignoring case
+     * 
+     * @param firstName
+     * @param lastName
+     * @return A {@link List} of {@link Person} instances
+     */
+    @RestResource(path = "by", exported = true)
+    List<Person> findByFirstNameContainingOrLastNameContainingAllIgnoreCase(@Param("name") String firstName,
+	    @Param("name") String lastName);
 
-	@Override
-	@RestResource(exported = false)
-	void delete(Long id);
+    @Override
+    @RestResource(exported = false)
+    void delete(Long id);
 
-	@Override
-	@RestResource(exported = false)
-	void delete(Person entity);
+    @Override
+    @RestResource(exported = false)
+    void delete(Person entity);
 
 }

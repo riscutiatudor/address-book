@@ -2,7 +2,7 @@ sap.ui.define([
 	"ro/riscutiatudor/controller/BaseController",
 	"ro/riscutiatudor/service/PersonService",
 	"sap/ui/model/json/JSONModel"
-], function(BaseController, PersonService, JSONModel) {
+], function (BaseController, PersonService, JSONModel) {
 	"use strict";
 
 	/**
@@ -12,7 +12,7 @@ sap.ui.define([
 	 * @version 1.0
 	 */
 	return BaseController.extend("ro.riscutiatudor.controller.NewPerson", {
-		
+
 		/* =========================================================== */
 		/* lifecycle methods */
 		/* =========================================================== */
@@ -21,11 +21,11 @@ sap.ui.define([
 		 * Called when the controller is instantiated
 		 * @public
 		 */
-		onInit : function () {
+		onInit: function () {
 			// attach handler before target display
 			this.getRouter().getTarget("newPerson").attachDisplay(this._display, this);
 		},
-		
+
 		/* =========================================================== */
 		/* event handlers */
 		/* =========================================================== */
@@ -34,23 +34,23 @@ sap.ui.define([
 		 * Cancel create process and navigate back
 		 * @public
 		 */
-		onCancel : function () {
+		onCancel: function () {
 			this.onNavBack();
 		},
-		
+
 		/**
 		 * Create new person and navigate to it
 		 * @public
 		 */
-		onSave : function () {
+		onSave: function () {
 			var oPerson = this.getModel("new").getData();
-			
+
 			var oThis = this;
 			PersonService.create(oPerson, function (oPerson) {
-				oThis.getRouter().navTo("person", { id : encodeURI(oPerson.id) }, true);
-			} );
+				oThis.getRouter().navTo("person", { id: encodeURI(oPerson.id) }, true);
+			});
 		},
-	
+
 		/* =========================================================== */
 		/* internal methods */
 		/* =========================================================== */
@@ -59,15 +59,15 @@ sap.ui.define([
 		 * Refresh model before display
 		 * @private
 		 */
-		_display : function() {
+		_display: function () {
 			this.setModel(new JSONModel({
-				title : "MR",
-				firstName : "",
-				lastName : "",
-				emailAddress : ""
+				title: "MR",
+				firstName: "",
+				lastName: "",
+				emailAddress: ""
 			}), "new");
 		}
-		
+
 	});
-	
+
 });

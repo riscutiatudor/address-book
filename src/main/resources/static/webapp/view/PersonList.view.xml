@@ -17,7 +17,8 @@
 			</Toolbar>
 		</subHeader>
 		<content>
-			<List id="list" growing="false" items="{persons>/}" mode="SingleSelectMaster"
+			<List id="list" growing="true" growingThreshold="10" items="{persons>/}" mode="SingleSelectMaster"
+				updateStarted="onUpdateStarted" updateFinished="onUpdateFinished"
 				selectionChange="onSelectionChange">
 				<ObjectListItem type="Active" press="onSelectionChange"
 					title="{persons>fullName}">
