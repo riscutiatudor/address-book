@@ -14,6 +14,8 @@ import ro.riscutiatudor.core.model.Person;
 @Projection(name = "summary", types = Person.class)
 public interface PersonSummary {
 
+	Long getId();
+	
 	@Value("#{target.firstName + ' ' + target.lastName}")
 	String getFullName();
 

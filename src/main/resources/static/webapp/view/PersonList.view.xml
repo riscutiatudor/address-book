@@ -1,0 +1,36 @@
+<mvc:View controllerName="ro.riscutiatudor.controller.PersonList"
+	xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m">
+
+	<Page>
+		<customHeader>
+			<Bar>
+				<contentMiddle>
+					<Title level="H1" text="{i18n>personListTitle} ({persons>/length})"
+						textAlign="Center" />
+				</contentMiddle>
+			</Bar>
+		</customHeader>
+		<subHeader>
+			<Toolbar>
+				<SearchField id="searchField" placeholder="{i18n>personListSearch}"
+					search="onSearch" />
+			</Toolbar>
+		</subHeader>
+		<content>
+			<List id="list" growing="false" items="{persons>/}" mode="SingleSelectMaster"
+				selectionChange="onSelectionChange">
+				<ObjectListItem type="Active" press="onSelectionChange"
+					title="{persons>fullName}">
+				</ObjectListItem>
+			</List>
+		</content>
+		<footer>
+			<Bar>
+				<contentRight>
+					<Button icon="sap-icon://add" press="onNewPerson" />
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+
+</mvc:View>

@@ -1,0 +1,71 @@
+<mvc:View controllerName="ro.riscutiatudor.controller.NewPerson"
+	xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form">
+
+	<Page>
+		<customHeader>
+			<Bar>
+				<contentLeft>
+					<Button icon="sap-icon://nav-back" press="onNavBack" />
+				</contentLeft>
+				<contentMiddle>
+					<Title level="H1" text="New Person" textAlign="Center" />
+				</contentMiddle>
+			</Bar>
+		</customHeader>
+		<content>
+
+			<f:Form editable="true">
+				<f:layout>
+					<f:ResponsiveGridLayout labelSpanXL="4"
+						labelSpanL="4" labelSpanM="4" labelSpanS="12" adjustLabelSpan="false"
+						emptySpanXL="1" emptySpanL="1" emptySpanM="1" emptySpanS="0"
+						columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false" />
+				</f:layout>
+				<f:formContainers>
+					<f:FormContainer>
+						<f:formElements>
+							<f:FormElement label="Title">
+								<f:fields>
+									<SegmentedButton selectedKey="{new>/title}"
+										width="100%">
+										<items>
+											<SegmentedButtonItem key="MR" text="Mr." />
+											<SegmentedButtonItem key="MS" text="Ms." />
+										</items>
+									</SegmentedButton>
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="First Name">
+								<f:fields>
+									<Input value="{new>/firstName}" />
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="Last Name">
+								<f:fields>
+									<Input value="{new>/lastName}" />
+								</f:fields>
+							</f:FormElement>
+
+							<f:FormElement label="Email Address">
+								<f:fields>
+									<Input value="{new>/emailAddress}" />
+								</f:fields>
+							</f:FormElement>
+						</f:formElements>
+					</f:FormContainer>
+				</f:formContainers>
+			</f:Form>
+
+		</content>
+		<footer>
+			<Bar>
+				<contentRight>
+					<Button text="Save" type="Emphasized" press="onSave" />
+					<Button text="Cancel" type="Transparent" press="onCancel" />
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+
+</mvc:View>

@@ -8,6 +8,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import ro.riscutiatudor.util.AbstractAuditableEntity;
 
 /**
@@ -20,22 +22,23 @@ import ro.riscutiatudor.util.AbstractAuditableEntity;
 @Table(name = "PERSON")
 @Data
 @NoArgsConstructor
+@RequiredArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 public class Person extends AbstractAuditableEntity {
 
 	public enum PersonTitle {
-		MR, MS
+		MR, MS;
 	}
 
 	@Column(name = "TITLE")
 	private PersonTitle title;
 
 	@Column(name = "FIRST_NAME")
-	private String firstName;
+	private @NonNull String firstName;
 
 	@Column(name = "LAST_NAME")
-	private String lastName;
+	private @NonNull String lastName;
 
 	@Column(name = "EMAIL_ADDRESS")
 	private String emailAddress;

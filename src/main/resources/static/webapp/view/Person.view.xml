@@ -1,0 +1,22 @@
+<mvc:View controllerName="ro.riscutiatudor.controller.Person"
+	xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m">
+
+	<Page>
+		<customHeader>
+			<Bar>
+				<contentLeft>
+					<Button icon="sap-icon://nav-back" press="onNavBack" />
+				</contentLeft>
+				<contentMiddle>
+					<Title level="H1" text="{person>/firstName} {person>/lastName}"
+						textAlign="Center" />
+				</contentMiddle>
+			</Bar>
+		</customHeader>
+		<content>
+		</content>
+		<footer>
+		</footer>
+	</Page>
+
+</mvc:View>

@@ -1,0 +1,96 @@
+{
+	"_version": "1.0.0",
+	"sap.app": {
+		"id": "ro.riscutiatudor",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+	"sap.ui5": {
+		"rootView": {
+			"viewName": "ro.riscutiatudor.view.App",
+			"type": "XML",
+			"id": "app"
+		},
+		"dependencies": {
+			"minUI5Version": "1.49.0"
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "ro.riscutiatudor.i18n.i18n"
+				}
+			}
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"viewPath": "ro.riscutiatudor.view",
+				"controlId": "app",
+				"controlAggregation": "detailPages",
+				"bypassed": {
+					"target": [
+						"personList",
+						"notFound"
+					]
+				},
+				"async": true
+			},
+			"routes": [
+				{
+					"pattern": "",
+					"name": "personList",
+					"target": [
+						"personList"
+					]
+				},
+				{
+					"pattern": "persons/{id}",
+					"name": "person",
+					"target": [
+						"personList",
+						"person"
+					]
+				}
+			],
+			"targets": {
+				"personList": {
+					"viewName": "PersonList",
+					"viewId": "personList",
+					"viewLevel": 1,
+					"controlAggregation": "masterPages"
+				},
+				"person": {
+					"viewName": "Person",
+					"viewId": "person",
+					"viewLevel": 2
+				},
+				"newPerson": {
+					"viewName": "NewPerson",
+					"viewId": "newPerson",
+					"viewLevel": 2
+				},
+				"notFound": {
+					"viewName": "NotFound",
+					"viewId": "notFound"
+				}
+			}
+		}
+	}
+}

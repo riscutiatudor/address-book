@@ -23,6 +23,15 @@ public interface PersonRepository extends JpaRepository<Person, Long> {
 	 * can be tested using: /persons/search/by?name=*
 	 */
 	@RestResource(path = "by", exported = true)
-	List<Person> findByFirstNameContainingOrLastNameContainingAllIgnoreCase(@Param("name") String firstName, @Param("name") String lastName);
+	List<Person> findByFirstNameContainingOrLastNameContainingAllIgnoreCase(@Param("name") String firstName,
+			@Param("name") String lastName);
+
+	@Override
+	@RestResource(exported = false)
+	void delete(Long id);
+
+	@Override
+	@RestResource(exported = false)
+	void delete(Person entity);
 
 }
